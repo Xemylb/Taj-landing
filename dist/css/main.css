@@ -82,6 +82,7 @@ button, input, select, textarea {
   font: 16px/24px 'Oswald', Sans-Serif;
   font-weight: 700;
   color: #000000;
+  cursor: pointer;
 }
 
 .section-container {
