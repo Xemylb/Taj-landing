@@ -1,0 +1,1117 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:700')
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,700')
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,700')
+
+$titleWeight: 700
+$mainWeight: 300
+$mainFont: 16px/26px "Work Sans", sans-serif
+$additionFont: 38px/45px 'Oswald', sans-serif
+$navFont: 16px/26px 'Oswald', sans-serif
+$color: #ffffff
+$colorInverse: #000000
+$colorBlue: #004790
+$allTransition: all .5s
+$widthTransition: width .5s
+$hoverTransition: all .22s cubic-bezier(.215,.61,.355,1)
+$matrixTransform: matrix(1, 0, 0, 1, 0, 0)
+
+@mixin fontSizeLineHeight($size, $height)
+	font-size: $size
+	line-height: $height
+
+@mixin widthAndHeight($width, $height)
+	width: $width
+	height: $height
+
+%sideFrames //шаблон для боковых рамок
+	@include widthAndHeight(0, 100%)
+	content: ''
+	display: block
+	position: fixed
+	background: $color
+	transition: $allTransition
+
+
+.my-container
+		margin: 0 auto
+		max-width: 950px
+		height: 500px
+		position: relative
+
+*, :after, :before
+	box-sizing: border-box
+
+body
+	margin: 0
+	overflow-x: hidden
+	color: $color
+	font: $mainFont
+	font-weight: $mainWeight
+
+h1, h2 , h3
+	font-weight: $titleWeight
+
+h1
+	@include fontSizeLineHeight(80px,80px)
+	font-weight: $titleWeight !important
+
+h2
+	@include fontSizeLineHeight(45px,68px)
+
+h3
+	font: $additionFont
+
+a
+	text-decoration: none
+	color: $color
+
+	&:hover
+		@extend a
+
+	&:focus
+		@extend a
+		outline: 0
+ul
+	margin-top: 0
+	padding: 0
+	li
+		list-style: none
+
+::-webkit-input-placeholder //стилизирование инпутов
+	color: $colorInverse
+:focus::-webkit-input-placeholder //стилизирование инпутов
+	color: transparent
+
+button, input, select, textarea
+	font: 16px/24px 'Oswald', Sans-Serif
+	font-weight: $titleWeight
+	color: $colorInverse
+
+.section-container
+	position: relative
+	margin: 0 66px
+	height: 100%
+	padding: 0
+.btn
+	width: 306px
+	height: 60px
+	border-radius: 100px
+	background-color: $color
+	letter-spacing: 1px
+	font: $mainFont
+	font-weight: $titleWeight
+	color: $colorInverse
+	text-transform: uppercase
+	display: inline-block
+	padding-top: 16px
+	margin-bottom: 0
+	text-align: center
+	vertical-align: middle
+	touch-action: manipulation
+	cursor: pointer
+	border: 1px solid transparent
+	white-space: nowrap
+	user-select: none
+
+/*Прелоадер*/
+#page-preloader
+	position: fixed
+	left: 0
+	top: 0
+	right: 0
+	bottom: 0
+	background: #cecece
+	z-index: 100500
+#page-preloader .spinner
+	width: 64px
+	height: 64px
+	position: absolute
+	left: 50%
+	top: 50%
+	transform: translate(-50%,-50%)
+	background: url('../img/preloader.gif') no-repeat center
+
+/*title блок для секции*/
+.section-title
+	margin-top: 100px
+	display: block
+	width: 100%
+	height: 100%
+	.section-title-background
+		width: 100%
+		height: 500px
+		position: absolute
+		z-index: 0
+	.my-container
+		.section-title-h2
+			text-align: center
+			margin: 0
+			width: 100%
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%,-50%)
+			z-index: 1
+
+
+/*Хедер и меню*/
+header
+	letter-spacing: 0.1em
+	width: 100%
+	position: fixed
+	top: 0
+	height: 74px
+	font: $navFont
+	font-weight: $titleWeight
+	z-index: 999
+
+	&:before
+		content: ''
+		display: block
+		position: fixed
+		background: $color
+		transition: $allTransition
+		z-index: -1
+		height: 0
+		width: 100%
+		.scroll-down &
+			height: 84px
+
+	.logo
+		@include widthAndHeight(132px, 33px)
+		float: left
+		margin: 32px 0 32px 66px
+		a
+			display: block
+			width: 100%
+			height: 100%
+			background: url("../img/taj-tarsha-white.png") no-repeat center
+			.scroll-down &
+				background: url("../img/taj-tarsha.png") no-repeat center
+	nav
+		display: block
+		padding: 0
+		margin: 32px 66px 32px 0
+		float: right
+		text-transform: uppercase
+		li
+			transform: $matrixTransform
+			margin-right: 68px
+			display: inline-block
+			&:nth-child(4)
+				margin-right: 0
+			a
+				position: relative
+				span
+					position: relative
+					transition: $hoverTransition
+				span:last-child
+					position: absolute
+					bottom: -10px
+					left: 0
+					opacity: 0
+				&:after
+					content: ''
+					display: block
+					background: $color
+					transition: $widthTransition
+					width: 0
+					height: 2px
+				.scroll-down &:after
+					background: $colorInverse
+		li.active
+			a:after
+				width: 100%
+		li:nth-child(2)
+			a
+				span:last-child
+					white-space: nowrap
+	.header-social
+		display: none
+
+.scroll-down .menu
+	li
+		a
+			color: $colorInverse
+
+/* левая и правая рамки*/
+.left-content, .right-content
+	@include widthAndHeight(0, 100%)
+	position: absolute
+	z-index: 333
+
+.left-content
+	left: 0
+	.social
+		position: fixed
+		left: -169px
+		transform: rotate(-90deg)
+		top: 45vh
+		width: 400px
+		font: 1em/1em  'Work Sans'
+		font-weight: lighter
+		z-index: 999
+		li
+			margin-right: 68px
+			display: inline-block
+			position: relative
+			transform: $matrixTransform
+			a
+				position: relative
+
+			span
+				position: relative
+				transition: $hoverTransition
+				.scroll-down &
+					color: $colorInverse
+			.span-hover
+				color: $color
+				opacity: 0
+				right: 0
+				bottom: -8px
+				position: absolute
+				.scroll-down &
+					color: $colorInverse
+
+
+.left-content:after, .right-content:after
+	@extend %sideFrames
+	top: 0
+	.scroll-down &
+		width: 66px
+
+.right-content:after
+	right: 0
+
+
+.left-content:after
+	left: 0
+
+.right-content
+	right: 0
+	.nav-craps
+		width: 10px
+		height: 67px
+		position: fixed
+		right: 29px
+		top: 40vh
+		z-index: 999
+		.crap
+			align-content: center
+			width: 9px
+			height: 9px
+			margin-top: 11px
+			background: $color
+			border-radius: 50%
+			position: relative
+			.scroll-down &
+				background: #ececec
+			a
+				display: block
+				width: 100%
+				height: 100%
+		li.active
+			background: url("../img/right-nav-white-active.svg") center no-repeat
+			.scroll-down &
+				background: url("../img/right-nav-black-active.svg") center no-repeat
+
+/*Правая ссылка и стрелка*/
+.go-next
+	position: fixed
+	top: 75vh
+	right: 0
+	transform: rotate(-90deg)
+	z-index: 777
+	.go-next-link
+		text-transform: uppercase
+		display: inline-block
+		color: $color
+		font: 1em/1em  'Oswald'
+		font-weight: 600
+
+		&:before
+			transition: $widthTransition
+			position: absolute
+			display: block
+			content: ''
+			width: 60px
+			height: 2px
+			background: $color
+			right:  70px
+			top: 10px
+		&:after
+			transition: $allTransition
+			position: absolute
+			display: block
+			content: ''
+			width: 20px
+			height: 20px
+			background: url("../img/white-arrow.png") no-repeat center
+			right: 118px
+			top: 1px
+	&:hover
+		.go-next-link
+			&:after
+				right: 178px
+			&:before
+				width: 120px
+
+.scroll-down
+	.go-next
+		top: 65vh
+		right: 60px
+	.go-next-up
+		transform: rotate(90deg)
+		right: 75px
+
+/*Нижняя рамка*/
+.bottom-border
+	@include widthAndHeight(100%, 0)
+	background: $color
+	bottom: 0
+	transition: $allTransition
+	position: fixed
+	z-index: 333
+	&:after
+		@extend header:before
+
+	.scroll-down &
+		height: 71px
+
+
+
+
+/*Первая секция*/
+#first-section
+	@include widthAndHeight(100%, 100vh)
+	background: url("../img/taj-1st-3.jpg") no-repeat center
+	background-size: cover
+	overflow: hidden
+	.first-section-title
+		left: calc(50vw - 325px)
+		top: calc(52vh - 40px)
+		height: 80px
+		position: absolute
+		width: 650px
+		color: $color
+		z-index: 777
+	/*Градиент на первой секции*/
+
+	.gradient
+		height: 1800px
+		width: 900px
+		position: absolute
+		transform: rotate(-40deg)
+		z-index: 0
+		left: 50px
+		top: -220px
+		background: -webkit-gradient(linear, 0% 51%, 0% 99%, from(rgba(66, 130, 202, 0.8)), to(rgba(11,44,79,0.31)))
+
+	#animation-hello
+		top: calc(50vh - 250px)
+		left: calc(50vw - 500px)
+		position: absolute
+		width: 750px
+		height: 500px
+		background: url("../img/hello.png") no-repeat center
+		background-position-x: 0
+		background-position-y: 0
+		margin-left: 30px
+		z-index: 777
+	.btn-container
+		height: 60px
+		position: absolute
+		width: 242px
+		top: calc(88vh - 30px)
+		left: calc(50vw - 160px)
+		.first-section-btn
+			@extend .btn
+			font: 18px/26px 'Oswald', sans-serif
+			background: $color url('../img/rectangle-4.svg') no-repeat center
+			width: 60px
+			transition: $widthTransition
+			color: $color
+			z-index: 777
+			&:hover
+				width: 242px
+				color: $colorInverse
+				background-position: 95% 50%
+				span
+					margin-left: 0
+			span
+				transition: $allTransition
+				margin-left: 70px
+
+
+
+
+/*Вторая секция с фото и скроллом (секция "обо мне")*/
+#about-section
+	background: #1e1d1f
+	background-size: cover
+	overflow: hidden
+	.section-container
+		.section-title
+			.section-title-background
+				background: url('../img/4in1.gif') no-repeat center
+				background-size: contain
+		.about-content
+			width: 100%
+			height: 100%
+			position: relative
+			.about-information
+				width: 66%
+				position: relative
+				z-index: 2
+				.about-text
+					margin-left: 33px
+					margin-top: 115px
+					span
+						display: block
+						margin-left: 236px
+						margin-top: 20px
+			#about-photo
+				perspective: 560px
+				overflow: hidden
+				position: absolute
+				width: 560px
+				height: 560px
+				top: 0
+				right: 80px
+				z-index: 1
+				.perspective
+					height: 100%
+					overflow: hidden
+					.gradient-photo
+						z-index: 999
+						height: 450px
+						width: 600px
+						position: absolute
+						transform: rotate(51deg)
+						left: -301px
+						top: 265px
+						opacity: 0
+						background: -webkit-gradient(linear, 0% 51%, 0% 99%, from(rgba(66, 130, 202, 0.3)), to(rgba(11,44,79,0.1)))
+						transition: $allTransition
+					&:hover
+						.gradient-photo
+							opacity: 1
+			#btn-blue
+				@extend .btn
+				background-color: $colorBlue
+				margin-top: 55px
+				margin-left: 270px
+				font-family: 'Oswald', sans-serif
+				&:hover
+					span
+						color: $colorInverse
+
+	.section-container-border
+		margin-top: 50px
+		margin-left: 208px
+		width: 60%
+		height: 2px
+		background: #3c3c3c
+	/* контейнер с вертикальным скролом*/
+	.latest-articles
+		margin-top: 50px
+		margin-bottom: 80px
+		margin-left: 136px
+		h2
+			margin-bottom: 49px
+		.latest-scroll-wrap
+			white-space: nowrap
+			overflow: hidden
+			.latest-scroll
+				overflow: hidden
+				height: 140px
+				.latest-scroll-inner
+					white-space: normal
+					position: relative
+					display: inline-block
+					.latest-scroll-inner-img
+						margin-right: 30px
+						min-width: 120px
+						float: left
+					.latest-scroll-inner-text
+						width: 70%
+						float: left
+						display: block
+					span
+						font: 15px/18px 'Montserrat', Sans-Serif
+						margin-bottom: 10px
+						display: block
+					span:first-child
+						font: 18px/28px 'Montserrat', Sans-Serif
+						font-weight: $titleWeight
+					.latest-scroll-inner-link
+						position: relative
+						cursor: pointer
+						color: $colorBlue
+						font: 16px/24px 'Oswald', sans-serif
+						&:after
+							transition: $widthTransition
+							display: inline-block
+							content: ''
+							width: 80px
+							height: 2px
+							background: $colorBlue
+							margin-bottom: 5px
+							margin-left: 10px
+						&:before
+							transition: $allTransition
+							position: absolute
+							display: block
+							content: ''
+							width: 8px
+							height: 15px
+							background: url("../img/arrows.svg") no-repeat center
+							background-size: cover
+							left: 160px
+							top: 5px
+						&:hover
+							&:after
+								width: 120px
+							&:before
+								left: 200px
+/*Третья секция (секция проэктов)*/
+#projects-section
+	background: #ececec
+	.section-container
+		.section-title
+			margin-top: 0
+			margin-bottom: 180px
+			.section-title-background
+				height: 550px
+				top: 55px
+				background: url('../img/projects.gif') no-repeat center
+				background-size: contain
+			.my-container
+				.section-title-h2
+					top: 60%
+					h2
+						color: $colorInverse
+
+	.projects-examples
+		margin: 0 124px
+		height: 1768px
+		.left-col, .right-col
+			float: left
+			width: 50%
+			height: 100%
+			.big-example, .small-example
+				background-size: cover
+				background-position: center
+				.example-hover
+					opacity: 0
+					transition: $allTransition
+					height: 100%
+					background: rgba(0, 70, 146, 0.8)
+					padding: 0 50px
+					.example-hover-text
+						.project-type
+							font-weight: $titleWeight
+							font-size: 0.8em
+					.download
+						span
+							margin-top: 34px
+							text-transform: uppercase
+							font: $additionFont
+							font-size: 1.2em
+							font-weight: $titleWeight
+						.download-icon
+							cursor: pointer
+							margin-left: 17px
+							display: inline-block
+							width: 20px
+							height: 18px
+							background: url('../img/download-icon.svg') no-repeat center
+				&:hover
+					.example-hover
+						opacity: 1
+			.big-example
+				height: 50%
+				.example-hover
+					padding-top: 300px
+			.small-example
+				height: 25%
+				.example-hover
+					padding-top: 120px
+		.left-col
+			.big-example
+				background-image: url("../img/example-left-1.png")
+			.small-example
+				background-image: url("../img/example-left-2.png")
+				&:last-child
+					background-image: url("../img/example-left-3.png")
+		.right-col
+			transition: transform 0.5s
+			.small-example
+				background-image: url("../img/example-right-1.png")
+				&:last-child
+					background-image: url("../img/example-right-2.png")
+			.big-example
+				background-image: url("../img/example-right-3.png")
+	.section-btn
+		padding: 90px 0
+		#project-section-btn
+			position: absolute
+			top: 60px
+			left: calc(50vw - 235px)
+/*Последня секция (секция контактов)*/
+#last-section
+	height: 100vh
+	background: #1e1d1f
+	.section-container
+		.section-title
+			margin: 0
+			.section-title-background
+				margin-top: 5vh
+				background: url('../img/contact.png') center no-repeat
+				background-size: contain
+			.my-container
+				.section-title-h2
+					padding-right: 66px
+					top: calc(48vh - 110px)
+					font-family: 'Work Sans', sans-serif
+				.section-title-span
+					padding-right: 66px
+					position: absolute
+					top: calc(47vh - 25px)
+					text-align: center
+			.section-btn
+				#last-section-btn
+					position: absolute
+					left: calc(50vw - 210px)
+					top: 65vh
+			.copyright
+				display: block
+				position: absolute
+				bottom: 90px
+				left: calc(50vw - 190px)
+				font: 14px/17px 'Montserrat', Sans-Serif
+/*формы*/
+.forms
+	width: 100%
+	height: 100%
+	display: none
+	background: rgba(51,51,51, 0.8)
+	z-index: 999
+	position: fixed
+	top: 0
+	right: 0
+	.modal-form
+		left: 50%
+		top: 50%
+		transform: translate(-50%, -50%)
+		background: #ececec
+		z-index: 1200
+		opacity: 1
+		width: 100%
+		max-width: 550px
+		position: fixed
+		h3
+			font-size: 24px
+			font-weight: $titleWeight
+			margin-top: 21px
+			margin-left: 60px
+			color: $colorInverse
+			width: 80%
+			margin-bottom: 50px
+		.exit
+			top: -73px
+			right: 38px
+			width: 18px
+			height: 18px
+			float: right
+			position: relative
+			cursor: pointer
+			span
+				position: absolute
+				margin-bottom: 5px
+				display: block
+				width: 100%
+				height: 2px
+				background: $colorInverse
+			span:nth-child(2)
+				transform: rotate(45deg)
+			span:nth-child(1)
+				transform: rotate(-45deg)
+		.form-block
+			.form-message
+				display: none
+				color: $colorBlue
+				margin-left: 60px
+				font: 18px/18px 'Oswald', sans-serif
+				font-weight: $titleWeight
+				text-transform: uppercase
+			input
+				width: 80%
+				margin-left: 60px
+				display: block
+				border: none
+				border-bottom: 2px $colorInverse solid
+				background: transparent
+				outline: none
+				margin-top: 27px
+				&:focus
+					border-bottom: 2px $colorBlue solid
+			button
+				position: relative
+				color: $colorBlue
+				margin-top: 41px
+				outline: none
+				background: transparent
+				border: none
+				float: right
+				margin-right: 140px
+				margin-bottom: 48px
+				&:after
+					content: ''
+					display: inline-block
+					background: url("../img/blue-arrow.svg") no-repeat center
+					height: 15px
+					width: 90px
+					position: absolute
+					top: 6px
+					left: 110px
+
+	.valid-form
+		display: none
+		#password-form
+			button
+				&:after
+					left: 72px
+	.contact-form
+		display: none
+
+.youtube-pop-up
+	@extend .forms
+	cursor: no-drop
+	display: none
+	.video
+		max-width: 600px
+		max-height: 400px
+		position: fixed
+		left: 50%
+		top: 50%
+		transform: translate(-50%, -50%)
+
+
+/*Медиа запросы*/
+@media only screen and (max-width: 1289px)
+	/*Медиа (1289)*/
+	#about-section
+		.latest-articles
+			.latest-scroll-wrap
+				white-space: normal
+				.latest-scroll
+					height: 100%
+					width: 100%
+					.latest-scroll-inner
+						min-width: 100%
+						margin-bottom: 30px
+						.latest-scroll-inner-img
+							float: left
+							margin-bottom: 10px
+						.latest-scroll-inner-text
+							float: left
+							width: 80%
+							min-width: 276px
+						span
+							margin-bottom: 18px
+							font-size: 1em
+
+	.social, .nav-craps, .go-next
+		display: none
+@media only screen and (max-width: 1169px)
+	header
+		nav
+			margin-right: 15px
+			transform: scale(0.8)
+
+	/*медиа (1169px) - вторая секция*/
+	#about-section
+		.section-container
+			.about-content
+				.about-information
+					width: 100%!important
+					.about-text
+						span
+							margin-left: 20px
+				#about-photo
+					right: 0
+					transform: scale(0.9)
+					@media (max-width: 976px)
+						right: 0
+			.about-information
+				position: relative
+				.about-btn
+					padding: 27px 0
+					#btn-blue
+						margin-left: 90px
+
+	/*медиа (1169px) - третья секция*/
+	#projects-section
+		.projects-examples
+			height: 3700px
+			.left-col, .right-col
+				width: 100%
+				height: 50%
+
+@media only screen and (max-width: 768px)
+	/*медиа (768px) - общее*/
+	section .section-container
+		margin: 0 15px !important
+
+	h1
+		font: 60px/60px 'Work Sans', sans-serif
+	h2
+		@include fontSizeLineHeight(28px,38px)
+
+	.btn
+		width: 242px
+
+	/*медиа (768px) - формы*/
+	.forms
+		.modal-form
+			h3
+				margin-left: 30px
+			.form-block
+				input
+					margin-left: 30px
+				.form-message
+					margin-left: 30px
+		.valid-form
+			.exit
+				top: -140px
+				right: 15px
+
+	/*медиа (768px) - header и меню*/
+	header
+		background: $color
+		.logo
+			margin: 24px 0 0 20px
+			a
+				background: url("../img/taj-tarsha.png") no-repeat center
+		nav
+			margin: 0
+			left: 0
+			top: 0
+			z-index: 777
+			background: #ececec
+			display: none
+			width: 100%
+			padding: 20px 20px
+			transform: scale(1)
+			.menu
+				margin-top: 20px
+				li
+					text-align: center
+					font-size: 25px
+					display: block
+					margin: 30px 0 0 0
+					a
+						color: #0b0b0b
+						&:after
+							display: none
+				li:nth-child(2)
+					a
+						span:last-child
+							width: 100% //для explorer и edge
+			.header-social
+				margin-top: 60px
+				display: block
+				z-index: 999
+				text-align: center
+				li
+					margin-top: 10px
+					width: 100%
+					a
+						color: $colorInverse
+
+	.btn-menu-drop
+		width: 45px
+		height: 45px
+		float: right
+		margin: 14px 15px
+		padding: 15px 5px
+		position: relative
+		cursor: pointer
+		span
+			margin-bottom: 5px
+			display: block
+			width: 100%
+			height: 2px
+			background: $colorInverse
+			&:nth-child(2)
+				position: absolute
+				display: none
+	.drop-active
+		span
+			display: none
+		span:nth-child(2), span:nth-child(1)
+			width: 80%
+			display: block
+			left: 5px
+			top: 22px
+		span:nth-child(2)
+			transform: rotate(45deg)
+		span:nth-child(1)
+			transform: rotate(-45deg)
+			position: absolute
+
+	/*медиа (768px) - первая секция*/
+	#first-section
+		.section-container
+			margin: 0 15px !important
+			#animation-hello
+				top: calc(50vh - 360px)
+				left: calc(50vw - 392px)
+				margin: 0
+				transform: scale(.4)
+			.first-section-title
+				padding: 10px
+				top: 45vh
+				left: 0
+				width: 100%
+				text-align: center
+
+			.btn-container
+				left: calc(50vw - 136px)
+				.first-section-btn
+					background-position: 95% 50%
+					span
+						margin-right: 70px
+						color: $colorInverse
+					&:hover
+						width: 242px
+			.gradient
+				left: -60px
+				top: -285px
+
+	/*медиа (768px) - экранные рамки*/
+	.left-content:after, .right-content:after
+		.scroll-down &
+			width: 15px
+
+	.bottom-border
+		.scroll-down &
+			height: 15px
+
+	/*медиа - вторая секция*/
+
+	#about-section
+		.section-container
+			.section-title
+				.section-title-background
+					position: relative
+					height: 155px
+				.my-container
+					height: 400px
+			.about-content
+				#about-photo
+					top: -80px
+					transform: scale(0.4) translateX(-125%)
+					left: 50%
+
+				.about-information
+					padding: 15px
+					position: relative
+					.about-btn
+						position: relative
+						padding: 110px 0
+						#btn-blue
+							margin-left: 0
+							position: absolute
+							top: 40px
+							left: calc(50vw - 167px)
+					.about-text
+						margin-left: 0
+						span
+							margin-left: 0
+		.latest-articles
+			padding-left: 15px
+			.latest-scroll-wrap
+				.latest-scroll
+					height: 100%
+					width: 100%
+					.latest-scroll-inner
+						width: 100%
+						min-width: 100%
+						margin-bottom: 30px
+						.latest-scroll-inner-img
+							width: 100%
+							margin-bottom: 10px
+						.latest-scroll-inner-text
+							width: 100%
+							min-width: 276px
+						span
+							margin-bottom: 5px
+							font-size: 1em
+		.section-container-border
+			margin: 30px 33px
+			width: 78%
+
+	/* медиа (768px) - третья секция*/
+
+	#projects-section
+		.section-container
+			.section-title
+				margin-bottom: 0
+				.section-title-background
+					height: 210px
+					top: 0
+			.my-container
+				height: 450px
+				.section-title-h2
+					padding: 5px
+					top: 73%
+		.projects-examples
+			height: 2800px
+			margin: 0 33px
+			.left-col, .right-col
+				width: 100%
+				.big-example
+					height: 40%
+					.example-hover
+						padding: 100px 20px
+				.small-example
+					height: 30%
+					.example-hover
+						padding: 40px 20px
+				.big-example, .small-example
+					.example-hover
+						.example-hover-text
+							.download
+								.download-icon
+									margin-left: 6px
+
+		.section-btn
+			#project-section-btn
+				left: calc(50vw - 138px)
+
+	/* медиа (768px) - последняя секция секция*/
+	#last-section
+		.section-container
+			.section-title
+				.section-title-background
+					margin-top: 30px
+					background-size: 100%
+					height: 255px
+				.my-container
+					.section-title-h2
+						top: 50vh
+						padding: 0 20px
+						h1
+							font-size: 60px
+							line-height: 60px
+					.section-title-span
+						display: none
+				.section-btn
+					#last-section-btn
+						left: calc(50vw - 138px)
+						top: calc(70vh)
+				.copyright
+					bottom: 30px
+					left: calc(50vw - 150px)

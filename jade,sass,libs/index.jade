@@ -1,0 +1,274 @@
+-var social = ['facebook', 'instagram', 'email'];
+-var socialLinks = ['facebook', 'instagram', 'email'];
+-var crapsHref = ['#first-section','#about-section','#projects-section','#last-section' ];
+-var crapsDataId = ['home', 'about', 'projects', 'contacts']
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+        title Tai-landing
+    link(rel='stylesheet' href='./css/libs.min.css')
+    link(rel='stylesheet' href='./css/main.css')
+    link(rel='icon' type='image/png' href='./img/favicon.png')
+    body
+        header#header
+            div.logo
+                a(href='#')
+            div.btn-menu-drop
+                span
+                span
+                span
+                span
+            nav
+                ul.menu
+                    li.active
+                        a(id='home' href='#first-section')
+                            span home
+                            span home
+                    li
+                        a(id='about' href='#about-section')
+                            span About me
+                            span About me
+                    li
+                        a(id='projects' href='#projects-section')
+                            span Projects
+                            span Projects
+                    li
+                        a(id='contacts' href='#last-section')
+                            span Contacts
+                            span Contacts
+                ul.header-social
+                    - for (var i=0; i<3; i++) {
+                        li
+                            a(href='#' + socialLinks[i]) #{social[i]}
+                    - }
+        div.left-content
+             div.social
+                 ul
+                 - for (var i=0; i<3; i++) {
+                    li
+                        a(href='#' + socialLinks[i])
+                            span #{social[i]}
+                            span.span-hover #{social[i]}
+                 - }
+        div.right-content
+            ul.nav-craps
+                - for (var i=0; i<4; i++) {
+                    -if (i==0) {
+                        li.crap.active(data-id = crapsDataId[i])
+                            a(href = crapsHref[i])
+                    -} else {
+                        li.crap
+                            a(href = crapsHref[i])
+                        -}
+                - }
+        div.go-next
+            a.go-next-link(href='#about-section') About me
+
+        div.bottom-border
+
+        section#first-section
+            div.section-container
+                div.gradient
+                div.back-layer
+                    div#animation-hello
+                div.first-section-title
+                    h1 I am Taj Tarsha
+                div.btn-container
+                    div.first-section-btn.btn
+                        div.play-icon
+                        span play video
+        section#about-section
+            div.section-container
+                div.section-title
+                    div.section-title-background
+                    div.my-container
+                        div.section-title-h2
+                            h2.
+                                I’m a digital startegist turned art
+                                director with years of experience
+                                at a full service digital agency
+                div.about-content
+                    div.section-container
+                            div.about-information
+                                div.about-text
+                                    h3.text-title /WHY
+                                    span.
+                                        Every day I get to wake up and be creative.
+                                        I love working with dynamic, small, and cross-functional teams,
+                                        and encountering new challenges across the digital landscape.
+                                div.about-text
+                                    h3.text-title /HOW
+                                    span.
+                                        I graduated from UW-Madison with a degree in economics and spent two years working as a technology consultant in Chicago.
+                                        I left my job to pursue passion in fashion and PR by becoming the creative director of a menswear brand in new york city.
+                                    span.
+                                        In 2015 I had the opportunity to move back to my home town of Chicago and contribute to the
+                                        start up ecosystem of the city by working as an account executive a start up called Mabbly,
+                                        and worked hard to transition onto the creative side as an art director.
+                                div.about-text
+                                    h3.text-title /WHAT
+                                    span.
+                                        I am passionate about a process called data-driven creative strategy.
+                                        I believe all projects start with a strategic approach and can be executed most
+                                        effectively via programmatic campaigns in digital.
+                                    span.
+                                        I am a self taught designer who uses sketch and data insights to help transform brands.
+                                        I am data-driven and reverse engineer everything that I do to achieve a common goal.
+                                div.about-btn
+                                    div#btn-blue.btn
+                                        span Contact me
+                            div#about-photo
+                                div.perspective
+                                    div.gradient-photo
+                                    img(src='./img/image-Taj.png')
+            div.section-container-border
+
+            div.latest-articles.section-container
+                h2 Latest Articles
+                div.latest-scroll-wrap
+                        div.latest-scroll
+                            - for (var i=0; i<4; i++) {
+                                div.latest-scroll-inner
+                                    div.latest-scroll-inner-img
+                                        img(src="./img/carousel-photo.png")
+                                    div.latest-scroll-inner-text
+                                        span.
+                                            Hidden Values of Retargeting
+                                            (from the Perspective of a Marketer and Customer):
+                                        span Posted on September 12, 2016
+                                        a.latest-scroll-inner-link READ MORE
+                            - }
+        section#projects-section
+            div.section-container
+                div.section-title
+                    div.section-title-background
+                    div.my-container
+                        div.section-title-h2
+                            h2.
+                                In relentless pursuit of my most authentic and best self…
+            div.projects-examples
+                div.left-col
+                    div.big-example
+                        div.example-hover
+                            div.example-hover-text
+                                span.project-type Ecommerce / Web Design
+                                h2 /Project Name
+                                span.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    Lorem ipsum  Lorem ipsum
+                                div.download
+                                    span Download case Study
+                                    span.download-icon
+                    div.small-example
+                        div.example-hover
+                            div.example-hover-text
+                                span.project-type Ecommerce / Web Design
+                                h2 /Project Name
+                                span.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    Lorem ipsum  Lorem ipsum
+                                div.download
+                                    span Download case Study
+                                    span.download-icon
+                    div.small-example
+                        div.example-hover
+                            div.example-hover-text
+                                span.project-type Ecommerce / Web Design
+                                h2 /Project Name
+                                span.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    Lorem ipsum  Lorem ipsum
+                                div.download
+                                    span Download case Study
+                                    span.download-icon
+                div.right-col
+                     div.small-example
+                         div.example-hover
+                             div.example-hover-text
+                                 span.project-type Ecommerce / Web Design
+                                 h2 /Project Name
+                                 span.
+                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                     Lorem ipsum  Lorem ipsum
+                                 div.download
+                                     span Download case Study
+                                     span.download-icon
+                     div.small-example
+                         div.example-hover
+                             div.example-hover-text
+                                 span.project-type Ecommerce / Web Design
+                                 h2 /Project Name
+                                 span.
+                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                     Lorem ipsum  Lorem ipsum
+                                 div.download
+                                     span Download case Study
+                                     span.download-icon
+                     div.big-example
+                         div.example-hover
+                             div.example-hover-text
+                                 span.project-type Ecommerce / Web Design
+                                 h2 /Project Name
+                                 span.
+                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                     Lorem ipsum  Lorem ipsum
+                                 div.download
+                                     span Download case Study
+                                     span.download-icon
+            div.section-container.section-btn
+                div#project-section-btn.btn
+                    span LOAD MORE WORKS
+        section#last-section
+            div.section-container
+                div.section-title
+                    div.section-title-background
+                    div.my-container
+                        div.section-title-h2
+                            h1.
+                                Let's connect
+                        div.section-title-span
+                            span.
+                                I believe people and relationships are at the core of every thing we do.
+                                Feel free to message me at taj.tarsha@gmail.com to connect and jam with one another.
+                    div.section-btn
+                        div#last-section-btn.btn
+                            span.
+                                WRITE AN EMAIL
+                    div.copyright
+                        span © Taj Tarsha Personal Website, 2016
+        div.forms
+            div.modal-form.contact-form
+                h3 DROP ME A MESSAGE
+                div.exit
+                    span
+                    span
+                div.form-block#message-form
+                    span.form-message(data-txt='Thanks for message')
+                    input#form-name(type = 'text', placeholder='YOUR NAME')
+                    input#form-type(type = 'text', placeholder='TYPE')
+                    input#form-message(type = 'text', placeholder='MESSAGE')
+                    button.form-send SEND MESSAGE
+            div.modal-form.valid-form
+                h3 THIS PROJECT REQUIRES PASSWORD
+                div.exit
+                    span
+                    span
+                div.form-block#password-form
+                    span.form-message(data-txt='Welcome')
+                    input#form-pass(type = 'text', placeholder='PASSWORD')
+                    button.form-send CONFIRM
+        div.youtube-pop-up
+            iframe.video(width="100%" height="100%" src="https://www.youtube.com/embed/68OEmKD6R7k" frameborder="0" allowfullscreen)
+        div#page-preloader
+            span.spinner
+        script(src='./js/libs.min.js')
+        script(src='./js/modules.js')
+        script(src='./js/main.js')
