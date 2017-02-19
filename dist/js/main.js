@@ -31,7 +31,7 @@ $(document).ready(function () {
 
     /*Действия при изменении размера окна страницы*/
         function resizeScrollBlocks() {
-            if ($(window).width() >= '1290') {
+            if ($(window).width() >= '1280') {
                 latestScrollInner.css('width', parseFloat($(".latest-scroll-wrap").css('width')) / 2);//распологаем 2 элемента четко по центру экрана
                 latestScroll.mCustomScrollbar({//вызываем плагин вертикальной прокрутки блока
                     axis: "x",
@@ -40,6 +40,11 @@ $(document).ready(function () {
                 });
                 latestScroll.mCustomScrollbar("update");//обновляем плагин скролла для правильной работы
             } else {
+                $('#mCSB_1_container').css({
+                    'left': '0',
+                    'width': parseFloat($(".latest-scroll-wrap").css('width'))
+                });//делаем размер блока под экран
+                latestScrollInner.css('width', parseFloat($(".latest-scroll-wrap").css('width')));//делаем размер блока под экран
                 latestScroll.mCustomScrollbar("disable");//выключаем плагин
             }
         }
