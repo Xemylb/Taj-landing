@@ -53,7 +53,6 @@ h1, h2 , h3
 
 h1
 	@include fontSizeLineHeight(80px,80px)
-	font-weight: $titleWeight !important
 
 h2
 	@include fontSizeLineHeight(45px,68px)
@@ -395,9 +394,9 @@ header
 		width: 650px
 		color: $color
 		z-index: 777
-	/*Градиент на первой секции*/
 
-	.gradient
+
+	.gradient //Градиент на первой секции
 		height: 1800px
 		width: 900px
 		position: absolute
@@ -574,7 +573,8 @@ header
 								width: 120px
 							&:before
 								left: 200px
-/*Третья секция (секция проэктов)*/
+
+/*Третья секция (секция проектов)*/
 #projects-section
 	background: #ececec
 	.section-container
@@ -658,6 +658,7 @@ header
 			position: absolute
 			top: 60px
 			left: calc(50vw - 235px)
+
 /*Последня секция (секция контактов)*/
 #last-section
 	height: 100vh
